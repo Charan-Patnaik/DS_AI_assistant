@@ -42,7 +42,12 @@ class AIAssistant():
         self.index_embeddings()
         
     def index_embeddings(self):
-        """Index the embeddings using ScaNN """
+        """Index the embeddings using ScaNN 
+           
+           The index_embeddings function indexes a set of embeddings using ScaNN (Scalable Nearest Neighbors), a library designed to efficiently perform nearest neighbor searches.
+
+           It's often used in scenarios like search engines, recommendation systems, or any application where quick similarity searches are needed.
+        """
         self.searcher = (scann.scann_ops_pybind.builder(db=self.embeddings, num_neighbors=10, distance_measure="dot_product")
                  .tree(num_leaves=min(self.embeddings.shape[0] // 2, 1000), 
                        num_leaves_to_search=100, 
